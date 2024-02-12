@@ -4,69 +4,49 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <title>Progetto</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title></title>
 </head>
 
 <body>
-    <header>
-        <img class="logo" src="assets/img/epicode_logo.png" />
-    </header>
-    <!DOCTYPE html>
-    <html lang="en">
+    <main>
+        <section>
+            <article>
+                <h1 id="titoloPrimo">Welcome to <b>your exam</b></h1>
+            </article>
+            <article>
+                <h4 class="viola" id="titoloIstruzioni">Instructions</h4>
+                <p>
+                    We don't expect most engineers to know the answers to all of
+                    these questions, so don't worry if you're unsure of a few of
+                    them.
+                </p>
+                <ul>
+                    <li>
+                        Each question is <b>timed</b> and can only be
+                        <b>answered once</b>.
+                    </li>
+                    <li>
+                        Changing browser tab or opening other windows will
+                        <b>invalidate the question</b>.
+                    </li>
+                    <li>This exam will take approx. <b>0-5 minutes.</b></li>
+                </ul>
+            </article>
+            <article id="form">
+                <form>
+                    <div id="contenitoreCondizioni">
+                        <input id="condizioni" type="checkbox" required />
+                        <label for="condizioni">I promise to answer myself without help from anyone</label>
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="assets/style/style.css" />
-        <title></title>
-    </head>
+                        <button id="buttonProceed" type="button"><b>PROCEED<b></button>
+                    </div>
+                    <p id="error" class="error">Please check this box before proceed</p>
+                </form>
+            </article>
+        </section>
+    </main>
 
-    <body>
-        <main>
-            <section>
-                <article>
-                    <h1 id="titoloPrimo">Welcome to <b>your exam</b></h1>
-                </article>
-                <article>
-                    <h4 class="viola" id="titoloIstruzioni">Instructions</h4>
-                    <p>
-                        We don't expect most engineers to know the answers to all of
-                        these questions, so don't worry if you're unsure of a few of
-                        them.
-                    </p>
-                    <ul>
-                        <li>
-                            Each question is <b>timed</b> and can only be
-                            <b>answered once</b>.
-                        </li>
-                        <li>
-                            Changing browser tab or opening other windows will
-                            <b>invalidate the question</b>.
-                        </li>
-                        <li>This exam will take approx. <b>0-5 minutes.</b></li>
-                    </ul>
-                </article>
-                <article id="form">
-                    <form>
-                        <div id="contenitoreCondizioni">
-                            <input id="condizioni" type="checkbox" required />
-                            <label for="condizioni">I promise to answer myself without help from anyone</label>
-
-                            <button id="buttonProceed" type="button"><b>PROCEED<b></button>
-                        </div>
-                        <p id="error" class="error">Please check this box before proceed</p>
-                    </form>
-                </article>
-            </section>
-        </main>
-
-        <script src="assets/script/script.js"></script>
-    </body>
-
-    </html>
-
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/welcome.js"></script>
 </body>
-
 </html>
