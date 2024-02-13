@@ -1,9 +1,11 @@
 const timerContainer = document.getElementById('timerContainer');
 const domanda = document.getElementById('domanda');
 const containerRisposte = document.getElementById('containerRisposte');
-let contatore = 0;
-const risposteDate = [];        //andremmo a pushare le risposte qui
-
+const domandeEstratte = [];
+const risposteDateArray = [];
+const proceed = document.getElementById('proceedDomanda');
+let risposta = true;        //andremmo a pushare le risposte qui
+let indice = 0;
 const questions = [
     {
       category: "Science: Computers",
@@ -105,36 +107,100 @@ const questions = [
   ];
   
 
- const caricaDomanda = (contatore) =>{
-    
-    domanda.innerText = questions[contatore].question;
-    const button = document.createElement('button');
-        //creare 1 bottone per risposta esatta
-        //creare 1/3 bottoni per rispote sbagliate
+
+
+  const estraiIndiceQuestions = () => {
+    let indiceQuestions = Math.floor((Math.random() * 10) );
+    const findIndice = domandeEstratte.find(element => element === indiceQuestions )
+    if(findIndice){
+      return estraiIndiceQuestions();
+    }
+    domandeEstratte.push(indiceQuestions);
+    return indiceQuestions;
+}
+
+
+  
+
+
+const init = () => {
+  
+  caricaDomanda(estraiIndiceQuestions());
+} 
+
+
+
+ const caricaDomanda = (indice) =>{
+    proceed.disabled = true;
+    domanda.innerText = questions[indice].question;
+    for(let i=0; i<=questions[indice].incorrect_answers.length; i++){
+      const button = document.createElement('button');
+      button.classList.add('risposta');
+      if(i === questions[indice].incorrect_answers.length){
+        button.innerText = questions[indice].correct_answer;
+        button.value = questions[indice].correct_answer;
+        button.addEventListener('click', gestisciRispostaEsatta);
+      }else{
+        button.innerText =  questions[indice].incorrect_answers[i];
+        button.value = questions[indice].incorrect_answers[i];
+        button.addEventListener('click', gestisciRispostaSbagliata);
+      }
+      containerRisposte.appendChild(button);
+    }
+   
         //mettere il tutto in ordine sparso dentro il div 'risposte'
-        let rispostaCorretta = questions[contatore].correct_answer;
-        for(let i= 0; i< questions[contatore].incorrect_answers.length; i++){
            
-           
-        }
-        
    
     //timer e domanda + 1 
  }
- caricaDomanda(contatore);
+ 
 
- const risposta = () => {
-    // funzione risposta bottone
-    //funzione risposta timeout 
-    // push true/false e vai avanti
-   
+
+
+const gestisciRispostaSbagliata = () => {
+  proceed.disabled = false;
+  risposta = false;
+  console.log(risposta);
+}
+
+
+ const gestisciRispostaEsatta = () => {
+  proceed.disabled = false;
+    risposta = true;
+    console.log(risposta);
+    if(risposta === true){
+
+        //
+     /*  if(proceed  || timeout){
+        risposteDateArray.push(risposta);
+      
+    } */
+      // se viene premuto 'proceed' push
+      // se scade il tempo ed è stato cliccato push
+      // se scade solo il tempo ... return
+
+  
+    // push true e vai avanti
+  }
     
  }
 
- const rispostaBtn = () =>{
-
- }
+ proceed.addEventListener('click', function(){
+  
  
+  if(domandeEstratte.length === 10){
+    
+   // window.location.href = 'result.html';
+  }else if(risposta){
+    risposteDateArray.push(risposta);
+  }
+    console.log(risposteDateArray);  
+    containerRisposte.innerHTML = '';
+    caricaDomanda(estraiIndiceQuestions());
+    
+ }) 
+
+
  const rispostaTimer = () =>{
     return false;
  }
@@ -145,9 +211,10 @@ const questions = [
 
  const finish = () => {
 
-  //  window.location.href = '';
+  // 
 
  }
 
- finish();
 
+ 
+ window.onload = init();
