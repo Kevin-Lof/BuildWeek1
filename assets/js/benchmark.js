@@ -159,8 +159,7 @@ const uncolora = () => {
 
 const colora = () => {
   let risposte = document.querySelectorAll(".risposta");
-  console.log(risposte);
-
+ 
   for (let i = 0; i < risposte.length; i++) {
     risposte[i].addEventListener(
       "click",
@@ -182,7 +181,7 @@ const gestisciRispostaEsatta = () => {
 
 const gestisciRisposta = () => {
   if (domandeEstratte.length === 10) {
-    localStorage.setItem("risposta", risposteDateArray.length);
+    localStorage.setItem('rispostaGiusta', risposteDateArray.length);
     window.location.href = "result.html";
   } else if (risposta) {
     risposteDateArray.push(risposta);
@@ -275,7 +274,7 @@ function formatTime(time) {
     seconds = `0${seconds}`;
   }
 
-  return `${seconds}`;
+  return `SECONDS <b>${seconds}</b>REMAINING`;
 }
 
 function setRemainingPathColor(timeLeft) {

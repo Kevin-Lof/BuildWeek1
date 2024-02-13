@@ -64,8 +64,14 @@ p, ul{
 }
 #error{
     font-size: 1.2em;
-    color:red;
-}
+    color:rgba(194, 19, 141, 1);
+  }
+
+  
+
+  #condizioni:checked + label::before{
+background-color: rgba(255, 255, 255, 0.153);
+  }
 
 #contenitoreCondizioni {
     font-size: 1.4em;
@@ -75,9 +81,15 @@ p, ul{
 #condizioni{
     width: 20px;
     height: 20px;
+    
 }
 
-
+#condizioni:checked, label::before{
+  background-color: rgba(255, 255, 255, 0.153);
+    }
+    #condizioni, label::before {
+      background-color: transparent; 
+        }
 .risposta{
      
     display: inline-flex;
@@ -102,12 +114,6 @@ p, ul{
   color: rgba(194, 19, 141, 1);
 }
 
-body {
-  font-family: sans-serif;
-  display: grid;
-  height: 100vh;
-  place-items: center;
-}
 
 .base-timer {
   position: relative;
@@ -157,12 +163,18 @@ body {
   height: 300px;
   top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.base-timer__label b{
+  font-size: 70px;
 }
 
 .selected{
-  background-color: rgba(194, 19, 141, 1);
+  background: linear-gradient(to top, #5d2272, #bc018c);
 }
 
