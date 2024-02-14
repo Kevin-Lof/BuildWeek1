@@ -198,8 +198,37 @@ background-color: rgba(255, 255, 255, 0.153);
 #questionsSbagliate,
 #questionsGiuste {
   font-size: 1em;
+  margin: 0;
 }
 
-#rateUs{
-  color: #e7e7eb;
+
+#rateUs a {
+  text-decoration: none;
+  border: 3px solid white;
+  padding: 18px 55px;
 }
+#rateUs a:link,
+#rateUs a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+#rateUs a:hover {
+  box-shadow: 0px 0px 21px 5px rgba(0, 255, 255, 0.3);
+}
+
+#correctAnswers{
+  text-align: left;
+}
+
+#wrongAnswers {
+  text-align: right;
+}
+
+#risposteGiuste,
+#risposteSbagliate,
+.scritte {
+  margin: 0;
+  font-size: 2.5em;
+}
+
