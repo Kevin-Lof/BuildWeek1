@@ -201,11 +201,15 @@ background-color: rgba(255, 255, 255, 0.153);
   margin: 0;
 }
 
+#rateUs {
+  margin-top: 50px;
+}
 
 #rateUs a {
   text-decoration: none;
   border: 3px solid white;
   padding: 18px 55px;
+  
 }
 #rateUs a:link,
 #rateUs a:visited {
@@ -229,6 +233,27 @@ background-color: rgba(255, 255, 255, 0.153);
 #risposteSbagliate,
 .scritte {
   margin: 0;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
+#cerchio {
+  font-size: 0.7em;
+}
+
+.celestino {
+  color: rgba(1, 255, 255, 1);
+}
+
+.violetto {
+  color:rgba(194, 19, 141, 1);
+}
+
+#results {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+#summary{
+  font-size: 1.3em;
+  margin: 0;
+}
