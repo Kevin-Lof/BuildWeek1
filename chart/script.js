@@ -5,20 +5,23 @@ new Chart(ctx, {
   data: {
     //labels: ['Green', 'Red'],
     datasets: [{
-      //label: '# of Votes',
+      label: '%',
       data: [75, 25],
+      backgroundColor: [
+        'rgba(0, 255, 34, 0.8)',
+        'rgba(255, 0, 0, 0.8)' // Colore di sfondo per il restante
+      ],
+      borderColor: [
+        'rgba(0, 255, 34, 0.8)',
+        'rgba(255, 0, 0, 0.8)' 
+      ],
       borderWidth: 1
     }]
   },
   options: {
-    width: '400px',
-    height: '400px',
+    responsive: false,
     cutout: '90%',
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
+    scales: { }
   }
 });
 
