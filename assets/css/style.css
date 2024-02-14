@@ -264,13 +264,16 @@ background-color: rgba(255, 255, 255, 0.153);
 
 #myChart{
   position: absolute;
-  transform: translate(-17%, -70%)
+  transform: translate(-21.5%, -75%)
 }
 
 #cerchioTesto{
   width: 200px;
 }
 
+#titoloRisultati {
+  margin-bottom: 48px
+}
 /* Quarta pagina di feedback  */
 
 .rating{
