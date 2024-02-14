@@ -8,7 +8,7 @@ let numRisposteSbagliate = 10 - numRisposteGiuste;
 let questionGiuste = document.getElementById('questionsGiuste')
 let questionSbagliate = document.getElementById('questionsSbagliate')
 
-const cerchioTesto = document.getElementById('cerchio')
+const cerchioTesto = document.getElementById('cerchioTesto')
 
 questionGiuste.innerHTML=`${numRisposteGiuste}/10 questions`
 questionSbagliate.innerHTML=`${numRisposteSbagliate}/10 questions`
@@ -25,3 +25,36 @@ const scrittaCerchioTesto = () => {
 }
 
 scrittaCerchioTesto();
+
+
+
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    //labels: ['Green', 'Red'],
+    datasets: [{
+      label: '%',
+      data: [ numRisposteSbagliate, numRisposteGiuste],
+      backgroundColor: [
+        'rgba(194, 19, 141, 1)',
+        'rgba(1, 255, 255, 1)'
+         // Colore di sfondo per il restante
+      ],
+      borderColor: [
+        'rgba(194, 19, 141, 1)',
+        'rgba(1, 255, 255, 1)'
+         
+      ],
+      borderWidth: 1
+      
+    }]
+  },
+  options: {
+    responsive: false,
+    cutout: '75%',
+    scales: { }
+  }
+});
+
