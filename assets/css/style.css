@@ -193,3 +193,13 @@ background-color: rgba(255, 255, 255, 0.153);
   display: inline-block;
   margin: 80px;
 }
+
+
+#questionsSbagliate,
+#questionsGiuste {
+  font-size: 1em;
+}
+
+#rateUs{
+  color: #e7e7eb;
+}
