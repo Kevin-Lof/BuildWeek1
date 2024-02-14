@@ -1,3 +1,4 @@
+@import "compass";
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 /*   font-family: 'Inter', sans-serif; */
@@ -178,3 +179,17 @@ background-color: rgba(255, 255, 255, 0.153);
   background: linear-gradient(to top, #5d2272, #bc018c);
 }
 
+#containerRisultati,
+#titoloRisultati,
+#rateUs{
+  text-align: center;
+}
+
+
+#correctAnswers,
+#wrongAnswers,
+#cerchio
+{
+  display: inline-block;
+  margin: 80px;
+}
