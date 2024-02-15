@@ -2,8 +2,8 @@ const risposteGiuste = document.getElementById('risposteGiuste');
 const risposteSbagliate = document.getElementById('risposteSbagliate');
 let numRisposteGiuste = localStorage.getItem('rispostaGiusta');
 let numRisposteSbagliate = 10 - numRisposteGiuste;
- risposteGiuste.innerHTML = `<b>${numRisposteGiuste}0%</b>`;
- risposteSbagliate.innerHTML = `<b>${numRisposteSbagliate}0%</b>`;
+ risposteGiuste.innerHTML = `<b>${numRisposteGiuste*10}%</b>`;
+ risposteSbagliate.innerHTML = `<b>${numRisposteSbagliate*10}%</b>`;
 
 let questionGiuste = document.getElementById('questionsGiuste')
 let questionSbagliate = document.getElementById('questionsSbagliate')
@@ -57,4 +57,5 @@ new Chart(ctx, {
     scales: { }
   }
 });
+
 

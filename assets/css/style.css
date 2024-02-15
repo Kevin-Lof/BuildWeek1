@@ -1,6 +1,6 @@
 @import "compass";
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 /*   font-family: 'Inter', sans-serif; */
 /* font-family: 'Outfit', sans-serif; */
 
@@ -15,21 +15,22 @@ body {
   padding: 0;
   font-size: 1.2em;
   color: #e7e7eb;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
-h1{
-    font-family: 'Outfit', sans-serif;  
-    font-weight: 400; 
-    font-size: 4.5em;
-    width: 500px;
-    line-height: 0.8;
+h1 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  font-size: 4.5em;
+  width: 7em;
+  line-height: 0.8;
 }
-.error{
-    display: none;
+.error {
+  display: none;
 }
 
+
 .buttonProceed {
-  margin-left: 13em;
+  margin-left: 6em;
   padding: 18px 55px;
   background-color: rgba(1, 255, 255, 1);
   color: rgba(11, 17, 59, 1);
@@ -38,98 +39,87 @@ h1{
   box-shadow: 0px 0px 21px 5px rgba(0, 255, 255, 0.3);
   font-size: 1em;
   font-weight: bold;
-  letter-spacing: -0.7px
+  letter-spacing: -0.7px;
 }
 
-.buttonProceed:disabled{
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 255, 255, 0.3);
+.buttonProceed:disabled {
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 255, 255, 0.3);
   -moz-box-shadow: 0px 0px 0px 0px rgba(0, 255, 255, 0.3);
   box-shadow: 0px 0px 0px 0px rgba(0, 255, 255, 0.3);
 }
 
-
 .viola {
   color: rgba(194, 19, 141, 1);
-  font-family: 'Outfit', sans-serif; 
+  font-family: "Outfit", sans-serif;
   font-size: 1.7em;
-
 }
 header img {
-  width: 180px;
+  width: 15em;
 }
 
-p, ul{
-    font-size: 1.7em;
-
+p,
+ul {
+  font-size: 1.7em;
+  font-weight: 300;
 }
-#error{
-    font-size: 1.2em;
-    color:rgba(194, 19, 141, 1);
-  }
-
-  
-
-  #condizioni:checked + label::before{
-background-color: rgba(255, 255, 255, 0.153);
-  }
+#error {
+  font-size: 1.2em;
+  color: rgba(194, 19, 141, 1);
+}
 
 #contenitoreCondizioni {
-    font-size: 1.4em;
-    margin-top: 120px;
+  font-size: 1.4em;
+  margin-top: 3.2em;
+  padding-bottom: 4em;
 }
 
-#condizioni{
-    width: 20px;
-    height: 20px;
-    
+#contenitoreCondizioni p {
+  margin: 0;
 }
 
-#condizioni:checked, label::before{
-  background-color: rgba(255, 255, 255, 0.153);
-    }
-    #condizioni, label::before {
-      background-color: transparent; 
-        }
+#contenitoreCondizioni span {
+  font-size: 0.8em;
+}
 
-#timer{
+#timer {
   display: flex;
   justify-content: right;
 }
 
 #domanda,
-#numberQuestion{
+#numberQuestion {
   text-align: center;
 }
 
-#domanda{
+#domanda {
   font-size: 48px;
 }
 
-
-.risposta{
-     
-    display: inline-flex;
-    width: 40%;
-    color: rgb(255, 255, 255); 
-    box-shadow:  1px 1px 5px  rgba(255, 255, 255, 0.9);
-    padding:  20px 300px;
-    border-radius: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin: 10px;
+.risposta {
+  width: 400px;
+  color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 10px;
+  font-size: 30px;
 }
 
-.risposta:active{
+.risposta:active {
   background: linear-gradient(to top, #5d2272, #bc018c);
 }
-.risposta:hover{
+.risposta:hover {
   background: linear-gradient(to top, #5d2272, #bc018c);
 }
 
-
-.violaQuestion{
+#containerRisposte {
+  width: 900px;
+  margin: 0 auto;
+}
+.violaQuestion {
   color: rgba(194, 19, 141, 1);
 }
-
 
 .base-timer {
   position: relative;
@@ -186,29 +176,26 @@ background-color: rgba(255, 255, 255, 0.153);
   text-align: center;
 }
 
-.base-timer__label b{
+.base-timer__label b {
   font-size: 70px;
 }
 
-.selected{
+.selected {
   background: linear-gradient(to top, #5d2272, #bc018c);
 }
 
 #containerRisultati,
 #titoloRisultati,
-#rateUs{
+#rateUs {
   text-align: center;
 }
 
-
 #correctAnswers,
 #wrongAnswers,
-#cerchio
-{
+#cerchio {
   display: inline-block;
   margin: 80px;
 }
-
 
 #questionsSbagliate,
 #questionsGiuste {
@@ -224,7 +211,6 @@ background-color: rgba(255, 255, 255, 0.153);
   text-decoration: none;
   border: 3px solid white;
   padding: 18px 55px;
-  
 }
 #rateUs a:link,
 #rateUs a:visited {
@@ -236,7 +222,7 @@ background-color: rgba(255, 255, 255, 0.153);
   box-shadow: 0px 0px 21px 5px rgba(0, 255, 255, 0.3);
 }
 
-#correctAnswers{
+#correctAnswers {
   text-align: left;
 }
 
@@ -260,7 +246,7 @@ background-color: rgba(255, 255, 255, 0.153);
 }
 
 .violetto {
-  color:rgba(194, 19, 141, 1);
+  color: rgba(194, 19, 141, 1);
 }
 
 #results {
@@ -268,85 +254,83 @@ background-color: rgba(255, 255, 255, 0.153);
   margin: 0;
 }
 
-#summary{
+#summary {
   font-size: 1.3em;
   margin: 0;
 }
 
-#containerRisultati{
+#containerRisultati {
   position: relative;
 }
 
-#myChart{
+#myChart {
   position: absolute;
-  transform: translate(-21.5%, -75%)
+  transform: translate(-21.5%, -75%);
 }
 
-#cerchioTesto{
+#cerchioTesto {
   width: 200px;
 }
 
 #titoloRisultati {
-  margin-bottom: 48px
+  margin-bottom: 48px;
 }
 /* Quarta pagina di feedback  */
 
-
-.rating{
-  display : flex;
+.rating {
+  display: flex;
 }
 
-.rating input{
-  position : absolute;
-  left     : -100vw;
+.rating input {
+  position: absolute;
+  left: -100vw;
 }
 
-.rating label{
-  width      : 48px;
-  height     : 48px;
-  padding    : 48px 0 0;
-  overflow   : hidden;
-  background : url('../img/stars.svg') no-repeat top left;
-
+.rating label {
+  width: 48px;
+  height: 48px;
+  padding: 48px 0 0;
+  overflow: hidden;
+  background: url("../img/stars.svg") no-repeat top left;
+  zoom: 1.2;
 }
 
 .rating:not(:hover) input:indeterminate + label,
 .rating:not(:hover) input:checked ~ input + label,
-.rating input:hover ~ input + label{
-  background-position : -48px 0;
-  
+.rating input:hover ~ input + label {
+  background-position: -48px 0;
 }
 
-.rating:not(:hover) input:focus-visible + label{
-  background-position : -96px 0;
+.rating:not(:hover) input:focus-visible + label {
+  background-position: -96px 0;
 }
 
-#titoloRating{
+#titoloRating {
   text-align: center;
   font-size: 2em;
 }
 
-
-
-#ratingPage{
+#ratingPage {
   text-align: center;
+}
+
+#ratingPage p {
+  margin: 0.9px 10px 42px 10px;
 }
 
 #ratingPage .rating {
   justify-content: center;
-
 }
 
-
-#ratingPage #buttonProceed{
+#ratingPage #buttonProceed {
   margin: 0;
 }
 
-#contenitoreBottone{
+#contenitoreBottone {
   margin-top: 50px;
 }
 
-#recensioneScritta{
+#recensioneScritta {
   margin-top: 10px;
   margin-bottom: 0;
   width: 1100px;
@@ -355,9 +339,32 @@ background-color: rgba(255, 255, 255, 0.153);
   border: none;
   font-size: 1.2em;
   color: rgba(231, 231, 235, 1);
-  
+  outline: none;
 }
 
-hr{
+hr {
   border-color: #bc018c;
+}
+
+/* checkbox */
+#condizioni {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #0b113b;
+  border: 2px solid #e7e7eb;
+  position: relative;
+  cursor: pointer;
+}
+
+#condizioni:checked::before {
+  content: "\2713"; /* Stile per la spunta (check) */
+  font-size: 10px;
+  color: #e7e7eb;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

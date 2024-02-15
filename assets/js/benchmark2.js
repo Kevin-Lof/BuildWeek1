@@ -3,12 +3,9 @@ const domanda = document.getElementById("domanda");
 const containerRisposte = document.getElementById("containerRisposte");
 const domandeEstratte = [];
 const risposteDateArray = [];
-
-let answersEstratte = [];
-let risposte = [];
 const proceed = document.getElementById("proceedDomanda");
 let risposta = true; //andremmo a pushare le risposte qui
-
+let indice = 0;
 let timerInterval = null;
 const numberQuestion = document.getElementById("numberQuestion");
 const questions = [
@@ -29,7 +26,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -107,47 +104,23 @@ const questions = [
   },
 ];
 
-
-//  estrai domande funziona
 const estraiIndiceQuestions = () => {
-  let indiceQuestions = Math.floor(Math.random() * questions.length);
-  if (!domandeEstratte.includes(indiceQuestions)) {
-    // Se il numero non è già presente, lo pusha nell'array
-    domandeEstratte.push(indiceQuestions);
-   
-} else {
-    // Se il numero è già presente, richiama la funzione ricorsivamente per ottenere un nuovo numero unico
-    estraiIndiceQuestions();
-}
-return indiceQuestions;
+  let indiceQuestions = Math.floor(Math.random() * 10);
+  const findIndice = domandeEstratte.find(
+    (element) => element === indiceQuestions
+  );
+  if (findIndice) {
+    return estraiIndiceQuestions();
+  }
+  domandeEstratte.push(indiceQuestions);
+  return indiceQuestions;
 };
-
-
-const estraiIndiceAnswers = () => {
-  let indiceAnswers = Math.floor(Math.random() * risposte.length);
-  
-  if (!answersEstratte.includes(indiceAnswers)) {
-    // Se il numero non è già presente, lo pusha nell'array
-    answersEstratte.push(indiceAnswers);
-} else {
-    // Se il numero è già presente, richiama la funzione ricorsivamente per ottenere un nuovo numero unico
-    estraiIndiceAnswers();
-}
-}; 
-
-
 
 const init = () => {
-  caricaDomanda();
+  caricaDomanda(estraiIndiceQuestions());
 };
 
-const caricaDomanda = () => {
-  estraiIndiceQuestions();
-
-  let indice = domandeEstratte[domandeEstratte.length - 1];
-
-  risposte = [];
-  answersEstratte = [];
+const caricaDomanda = (indice) => {
   document.getElementById("base-timer-label").innerHTML = formatTime(30);
   clearInterval(timerInterval);
   timePassed = 0;
@@ -156,39 +129,18 @@ const caricaDomanda = () => {
   numberQuestion.innerHTML = `QUESTION ${domandeEstratte.length}<span class='violaQuestion'>/10</span>`;
 
   domanda.innerText = questions[indice].question;
-
-  //in base alla domanda push risposte in base a multiple o boolean
-
-  if(questions[indice].type === 'multiple'){
-   for(let i=0; i< questions[indice].incorrect_answers.length; i++){
-    risposte.push(questions[indice].incorrect_answers[i]);
-   }
-   risposte.push(questions[indice].correct_answer);
-
-  }else{
-    risposte.push(questions[indice].incorrect_answers[0]);
-    risposte.push(questions[indice].correct_answer);
-  }
-  
-  for(let i = 0; i< risposte.length; i++) {
-    estraiIndiceAnswers();
-  }
-
-//costruiamo i bottoni casuali
-
-  for (let i = 0; i < answersEstratte.length; i++) {
+  for (let i = 0; i <= questions[indice].incorrect_answers.length; i++) {
     const button = document.createElement("button");
     button.classList.add("risposta");
-   
-      button.innerText = risposte[answersEstratte[i]];
-      button.value = risposte[answersEstratte[i]];
-      button.addEventListener("click", function() {
-        if(button.value === questions[indice].correct_answer){
-          gestisciRispostaEsatta();
-        }else{
-          gestisciRispostaSbagliata();
-        }
-      });
+    if (i === questions[indice].incorrect_answers.length) {
+      button.innerText = questions[indice].correct_answer;
+      button.value = questions[indice].correct_answer;
+      button.addEventListener("click", gestisciRispostaEsatta);
+    } else {
+      button.innerText = questions[indice].incorrect_answers[i];
+      button.value = questions[indice].incorrect_answers[i];
+      button.addEventListener("click", gestisciRispostaSbagliata);
+    }
 
     containerRisposte.appendChild(button);
   }
@@ -215,8 +167,6 @@ const colora = () => {
         risposte[i].classList.add("selected")}); }
 };
 
-
-
 const gestisciRispostaSbagliata = () => {
   uncolora();
   proceed.disabled = false;
@@ -238,7 +188,7 @@ const gestisciRisposta = () => {
   }
 
   containerRisposte.innerHTML = "";
-  caricaDomanda();
+  caricaDomanda(estraiIndiceQuestions());
 };
 
 proceed.addEventListener("click", function () {
