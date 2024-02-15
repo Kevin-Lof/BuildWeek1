@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/css/style.css" rel="stylesheet">
-    <title>Progetto</title>
+    <title>Results</title>
 </head>
+
 <body>
     <header>
         <img class="logo" src="assets/img/epicode_logo.png">
     </header>
-        
+    <main>
 
-    <script src="assets/js/script.js"></script>
+        <div id="titoloRisultati">
+            <h2 id="results">Results</h2>
+            <p id="summary">The summary of your answers:</p>
+         </div>
+        <div id="containerRisultati">
+            <div id="correctAnswers">
+                <p class="scritte">Correct</p>
+            <p id="risposteGiuste"></p>
+            <p id="questionsGiuste"></p>
+            </div>
+            <div id="cerchio">
+                <div id="cerchioTesto"></div>  
+                <div>
+                    <canvas id="myChart" width="400" height="400">
+                    </canvas>
+                </div>
+            </div>
+            <div id="wrongAnswers">
+                <p class="scritte">Wrong</p>
+            <p id="risposteSbagliate"></p>
+            <p id="questionsSbagliate"></p>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <div id="rateUs"><a href="feedback.html">RATE US</a></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/result.js"></script>
 </body>
+
 </html>
