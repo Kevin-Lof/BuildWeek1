@@ -4,6 +4,7 @@ let numRisposteGiuste = localStorage.getItem('rispostaGiusta');
 let numRisposteSbagliate = 10 - numRisposteGiuste;
  risposteGiuste.innerHTML = `<b>${numRisposteGiuste*10}%</b>`;
  risposteSbagliate.innerHTML = `<b>${numRisposteSbagliate*10}%</b>`;
+const myChart = document.getElementById('myChart');
 
 let questionGiuste = document.getElementById('questionsGiuste')
 let questionSbagliate = document.getElementById('questionsSbagliate')
@@ -15,12 +16,14 @@ questionSbagliate.innerHTML=`${numRisposteSbagliate}/10 questions`
 
 
 const scrittaCerchioTesto = () => {
-    if (parseInt(numRisposteGiuste)>=6) {
+    if (parseInt(numRisposteGiuste)>5) {
         cerchioTesto.innerHTML=`<p>Congratulations! <span class='celestino'>You passed the exam.</span></p> We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)`
+        myChart.classList.add('esamePassato');
     }
 
     else {
         cerchioTesto.innerHTML = `<p>We're sorry! <br> <span class='violetto'>You failed the exam.</span></p> Don't worry! You can try again and get your certificate!`
+        myChart.classList.add('esameFallito');
     }
 }
 
@@ -33,7 +36,7 @@ const ctx = document.getElementById('myChart');
 new Chart(ctx, {
   type: 'doughnut',
   data: {
-    //labels: ['Green', 'Red'],
+    
     datasets: [{
       label: '%',
       data: [ numRisposteSbagliate, numRisposteGiuste],
@@ -53,7 +56,7 @@ new Chart(ctx, {
   },
   options: {
     responsive: false,
-    cutout: '75%',
+    cutout: '70%',
     scales: { }
   }
 });

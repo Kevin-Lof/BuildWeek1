@@ -297,7 +297,7 @@ startTimer();
 
 function onTimesUp() {
   clearInterval(timerInterval);
- // gestisciRisposta();
+  gestisciRisposta();
 }
 
 function startTimer() {
