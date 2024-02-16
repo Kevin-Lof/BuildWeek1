@@ -148,9 +148,11 @@ const caricaDomanda = () => {
 
   risposte = [];
   answersEstratte = [];
-  document.getElementById("base-timer-label").innerHTML = formatTime(30);
   clearInterval(timerInterval);
+  document.getElementById("base-timer-label").innerHTML = formatTime(30);
+
   timePassed = 0;
+
   startTimer();
   proceed.disabled = true;
   numberQuestion.innerHTML = `QUESTION ${domandeEstratte.length}<span class='violaQuestion'>/10</span>`;
