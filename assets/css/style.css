@@ -43,6 +43,7 @@ h1 {
   font-size: 1em;
   font-weight: bold;
   letter-spacing: -0.7px;
+  cursor: pointer;
 }
 .buttonQuizProceed{
   padding: 18px 55px;
@@ -54,6 +55,7 @@ h1 {
   font-size: 1em;
   font-weight: bold;
   letter-spacing: -0.7px;
+  cursor: pointer;
 
  margin-top: 80px;
 
@@ -413,4 +415,25 @@ hr {
   width: 50%;
   display: inline-block;
   vertical-align: top;
+}
+
+#feedbackAfter{
+  text-align: center;
+}
+
+#thankYou{
+  font-size: 100px;
+}
+
+#returnHome{
+  margin: 0;
+}
+
+#errorFeedback{
+  margin-top: 20px !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+#moreInfo {
+  margin: 0;
 }

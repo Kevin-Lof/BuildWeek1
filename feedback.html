@@ -14,7 +14,7 @@
         <img class="logo" src="assets/img/epicode_logo.png">
     </header>
     <main>
-        <section>
+        <section id="feedbackBefore">
             <article id="titoloRating">
             <h2>Tell us how it's going</h2>
             </article>
@@ -46,12 +46,21 @@
                 <input id="recensioneScritta" type="text" placeholder="Write your comment here" > 
                 <hr>
                 <div id="contenitoreBottone">
-             <button id="buttonProceed" class="buttonProceed" type="button"><b>MORE INFO<b></button>
+             <button id="moreInfo" class="buttonProceed" type="button">MORE INFO</button>
+                <p id="errorFeedback" class="violetto">Please leave a comment and a rating before proceed</p>
+                
              </div>
             </article>
         </section>
+        <section id="feedbackAfter">
+            <div>
+                <h2 id="thankYou">Thank you for your feedback.</h2>
+                <p id="testoRetry"></p>
+                <button id="returnHome" class="buttonProceed" onclick="window.location.href = 'index.html'">Retry</button>
+            </div>
+        </section>
     </main>
 
- 
+ <script src="assets/js/feedback.js"></script>
 </body>
 </html>

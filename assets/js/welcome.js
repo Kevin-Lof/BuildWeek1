@@ -18,3 +18,13 @@ bttnProceed.addEventListener('click', function(e){
         error.classList.remove('error');
     }
 })
+
+
+window.onload = () => {
+    init();
+}
+
+
+const init = () => {
+    condizioni.checked = false;
+}
