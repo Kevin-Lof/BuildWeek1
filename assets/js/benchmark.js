@@ -1,13 +1,13 @@
 const timerContainer = document.getElementById("timerContainer");
 const domanda = document.getElementById("domanda");
 const containerRisposte = document.getElementById("containerRisposte");
-const domandeEstratte = [];
-const risposteDateArray = [];
+let domandeEstratte = [];  //array per contenere domande estratte e rendere possibile la randomizzazione
+let risposteDateArray = [];  //ci pushiamo le risposte corrette date, per riprenderle a pagina dopo 
 
-let answersEstratte = [];
-let risposte = [];
+let answersEstratte = [];  //array per contenere risposte estratte e rendere possibile la randomizzazione
+let risposte = [];  //ci pushiamo le 1/3 risposte sbagliate + la risposta corretta, in ordine, poi viene eseguito il random dell'array
 const proceed = document.getElementById("proceedDomanda");
-let risposta = true; //andremmo a pushare le risposte qui
+let risposta = false; //quando è vera, pushi in risposteDateArray
 
 let timerInterval = null;
 const numberQuestion = document.getElementById("numberQuestion");
@@ -108,7 +108,7 @@ const questions = [
 ];
 
 
-//  estrai domande funziona
+//  estrai domande - ricorsiva
 const estraiIndiceQuestions = () => {
   let indiceQuestions = Math.floor(Math.random() * questions.length);
   if (!domandeEstratte.includes(indiceQuestions)) {
@@ -138,22 +138,23 @@ const estraiIndiceAnswers = () => {
 
 
 const init = () => {
+  localStorage.clear(); //per non mantenere in memoria il vecchio test
   caricaDomanda();
 };
 
 const caricaDomanda = () => {
-  estraiIndiceQuestions();
+  estraiIndiceQuestions();  //ritorna  il valore dell'indice della domanda da pescare
 
-  let indice = domandeEstratte[domandeEstratte.length - 1];
+  let indice = domandeEstratte[domandeEstratte.length - 1];   //prendi l'indice dell'ultima pushata
 
   risposte = [];
   answersEstratte = [];
   clearInterval(timerInterval);
   document.getElementById("base-timer-label").innerHTML = formatTime(30);
 
-  timePassed = 0;
+  timePassed = 0;  //per non mandare il tempo in negativo
 
-  startTimer();
+  startTimer();  //parte il timer
   proceed.disabled = true;
   numberQuestion.innerHTML = `QUESTION ${domandeEstratte.length}<span class='violaQuestion'>/10</span>`;
 
@@ -162,21 +163,21 @@ const caricaDomanda = () => {
   //in base alla domanda push risposte in base a multiple o boolean
 
   if(questions[indice].type === 'multiple'){
-   for(let i=0; i< questions[indice].incorrect_answers.length; i++){
+   for(let i=0; i< questions[indice].incorrect_answers.length; i++){  //cicliamo le domande a risposta  multipla e pushiamo IN ORDINE le 4 risposte
     risposte.push(questions[indice].incorrect_answers[i]);
    }
    risposte.push(questions[indice].correct_answer);
 
   }else{
-    risposte.push(questions[indice].incorrect_answers[0]);
+    risposte.push(questions[indice].incorrect_answers[0]);  //cicliamo le domande a risposta  booleana e pushiamo IN ORDINE le 2 risposte
     risposte.push(questions[indice].correct_answer);
   }
   
-  for(let i = 0; i< risposte.length; i++) {
+  for(let i = 0; i< risposte.length; i++) {  //a seconda che siano 2 o 4 risposte, RANDOMIZZA l'ordine nell'array risposte (0,1,2,3 --> es. 2,0,3,1)
     estraiIndiceAnswers();
   }
 
-//costruiamo i bottoni casuali
+//costruiamo i bottoni in base al nuovo ordine randomizzato dell'array risposte
 
   for (let i = 0; i < answersEstratte.length; i++) {
     const button = document.createElement("button");
@@ -184,8 +185,8 @@ const caricaDomanda = () => {
    
       button.innerText = risposte[answersEstratte[i]];
       button.value = risposte[answersEstratte[i]];
-      button.addEventListener("click", function() {
-        if(button.value === questions[indice].correct_answer){
+      button.addEventListener("click", function() {  
+        if(button.value === questions[indice].correct_answer){  //a seconda del valore del bottone, parte un handler di risposte  
           gestisciRispostaEsatta();
         }else{
           gestisciRispostaSbagliata();
@@ -195,9 +196,7 @@ const caricaDomanda = () => {
     containerRisposte.appendChild(button);
   }
   colora();
-  //mettere il tutto in ordine sparso dentro il div 'risposte'
-
-  //timer e domanda + 1
+  
 };
 
 const uncolora = () => {
@@ -233,13 +232,13 @@ const gestisciRispostaEsatta = () => {
 
 const gestisciRisposta = () => {
   if (domandeEstratte.length === 10) {
-    localStorage.setItem('rispostaGiusta', risposteDateArray.length);
-    window.location.href = "result.html";
+    localStorage.setItem('rispostaGiusta', risposteDateArray.length);  //  salviamo i dati nel browser
+    window.location.href = "result.html";  // se hai fatto 10 domande, vai ai risultati
   } else if (risposta) {
-    risposteDateArray.push(risposta);
+    risposteDateArray.push(risposta);  //se la risposta è corretta (true), pushiamo nell'array che ci portiamo a pag 3
   }
 
-  containerRisposte.innerHTML = "";
+  containerRisposte.innerHTML = "";  //reset, svuotiamo il contenitore della domanda
   caricaDomanda();
 };
 
